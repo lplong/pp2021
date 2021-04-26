@@ -64,9 +64,6 @@ class Mark:
 
 
 
-
-
-
 #input user selection
 
 def selection ():
@@ -114,8 +111,6 @@ def markInput():
         inputMark = input("Mark: ")
         markList.append({'ID':inputID, 'Course':inputCourse, 'Mark':inputMark})
         print(markList)
-    
-
     
 
 

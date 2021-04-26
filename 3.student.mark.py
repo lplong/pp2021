@@ -5,12 +5,12 @@
 #        • Weighted sum of credits and marks
 #   • Sort student list by GPA descending
 # • Decorate your UI with curses module
-# • Push your work to corresponding forked Github repository
+
 
 
 
 import math  
- 
+import numpy as np 
  
 
 
@@ -18,7 +18,7 @@ import math
 studentList =[] 
 courseList = []
 markList = []
-
+gpa = []
 
        
 
@@ -123,16 +123,15 @@ def markInput():
         print(markList)
     
 
-def averageMark():
-    finalMark = input("Final Mark: ")
-    creditsNum = input("Num of credit: ")
-    sumFinalMAndCredit = finalMark * creditsNum
-    print(sumFinalMAndCredit)
-    totalCredit = input("Total Credits: ")
-    WaM = sumFinalMAndCredit / totalCredit
-    print("WaM",WaM)
+def averagegpa():
+    totalPoint = input("Total Point: ")
+    totalCredits = input("Total Credits: ")
+    gpaPoint = math.floor(totalPoint / totalCredits)
+    return gpaPoint
+    print("GPA: ",gpaPoint)
+    
      
 
 
 selection()
-averageMark()
+averagegpa()
