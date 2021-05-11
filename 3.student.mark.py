@@ -10,49 +10,49 @@
 import math
 # import numpy
 
- 
+
+class domain:
+
+    students = []
+    studentsDict = []
+    gpas = []
 
 
-students = []
-studentsDict = []
-gpas = []
+    def findGPA(studentObj):
+        GPA = 0
+        all_grade_points = 0
+        all_credits = 0
+
+        for course in studentObj.courses:
+            grade_point = course.mark * course.credit
+            all_grade_points += grade_point
+            all_credits += course.credit
+
+        GPA = all_grade_points/all_credits
+        studentObj.gpa = GPA
+
+        return GPA
 
 
-def findGPA(studentObj):
-    GPA = 0
-    all_grade_points = 0
-    all_credits = 0
-
-    for course in studentObj.courses:
-        grade_point = course.mark * course.credit
-        all_grade_points += grade_point
-        all_credits += course.credit
-
-    GPA = all_grade_points/all_credits
-    studentObj.gpa = GPA
-
-    return GPA
+    class Student():
+        def __init__(self, Id, name, dob):
+            self.name = name
+            self.id = Id
+            self.dob = dob
+            self.courses = []
+            self.gpa = None
 
 
-class Student():
-    def __init__(self, Id, name, dob):
-        self.name = name
-        self.id = Id
-        self.dob = dob
-        self.courses = []
-        self.gpa = None
-
-
-class Course():
-    def __init__(self, Id, name, credit, mark):
-        self.name = name
-        self.id = Id
-        self.mark = math.floor(float(mark))
-        self.credit = credit
+    class Course():
+        def __init__(self, Id, name, credit, mark):
+            self.name = name
+            self.id = Id
+            self.mark = math.floor(float(mark))
+            self.credit = credit
 
 
 
-class Input:
+class main:
 
     # input user selection
     def selection(self):
@@ -106,50 +106,50 @@ class Input:
     #     marks.append({'ID': inputID, 'Course': inputCourse, 'Mark': x})
     #     print(marks)
 
-
-my_input = Input()
-my_input.selection()
-
-
-stu1 = Student(1, "kien", 1)
-crs1 = Course("c1", "Python", 3, 11)
-crs2 = Course("c2", "Signal", 3, 12)
-crs3 = Course("c3", "DSA", 5, 15)
-
-stu1.courses.append(crs1)
-stu1.courses.append(crs2)
-stu1.courses.append(crs3)
+class output:
+    my_input = Input()
+    my_input.selection()
 
 
-stu2 = Student(2, "long", 1)
-crs4 = Course("c1", "Python", 3, 10)
-crs5 = Course("c2", "Signal", 3, 10)
-crs6 = Course("c3", "DSA", 5, 13)
+    stu1 = Student(1, "kien", 1)
+    crs1 = Course("c1", "Python", 3, 11)
+    crs2 = Course("c2", "Signal", 3, 12)
+    crs3 = Course("c3", "DSA", 5, 15)
 
-stu2.courses.append(crs4)
-stu2.courses.append(crs5)
-stu2.courses.append(crs6)
-
-
-students.append(stu1)
-students.append(stu2)
-print(len(students))
+    stu1.courses.append(crs1)
+    stu1.courses.append(crs2)
+    stu1.courses.append(crs3)
 
 
-# find GPA of all students
-for student in students:
-    findGPA(student)
+    stu2 = Student(2, "long", 1)
+    crs4 = Course("c1", "Python", 3, 10)
+    crs5 = Course("c2", "Signal", 3, 10)
+    crs6 = Course("c3", "DSA", 5, 13)
 
-# print(students[0].gpa)
-
-# Convert object to dictionary
-for student in students:
-    studentsDict.append(vars(student))
-
-print(studentsDict)
-
-# Sort students descendingly
-newStudents = sorted(studentsDict, key=lambda k: k['gpa'], reverse=False)
+    stu2.courses.append(crs4)
+    stu2.courses.append(crs5)
+    stu2.courses.append(crs6)
 
 
-print(newStudents)
+    students.append(stu1)
+    students.append(stu2)
+    print(len(students))
+
+
+    # find GPA of all students
+    for student in students:
+        findGPA(student)
+
+    # print(students[0].gpa)
+
+    # Convert object to dictionary
+    for student in students:
+        studentsDict.append(vars(student))
+
+    print(studentsDict)
+
+    # Sort students descendingly
+    newStudents = sorted(studentsDict, key=lambda k: k['gpa'], reverse=False)
+
+
+    print(newStudents)
